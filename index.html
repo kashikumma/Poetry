@@ -63,15 +63,13 @@
       poetSelect.appendChild(option);
     });
 
-   function showRandomPoetry() {
-  const selectedPoet = poetSelect.value;
-  const poems = poetryData[selectedPoet];
-  const randomIndex = Math.floor(Math.random() * poems.length);
-  const poemLines = poems[randomIndex];
-  poetryBox.innerHTML = poemLines.join("<br>");
-}
-    
+    function showRandomPoetry() {
+      const selectedPoet = poetSelect.value;
+      const poems = poetryData[selectedPoet];
+      const randomIndex = Math.floor(Math.random() * poems.length);
+      const poemLines = poems[randomIndex];
+      poetryBox.innerHTML = poemLines.join("<br>");
+    }
   </script>
 </body>
-
 </html>
