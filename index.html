@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+  <meta charset="UTF-8">
+  <title>Urdu Poetry Bot</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Nastaliq Urdu', serif;
+      background-color: #111;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+    select {
+      font-size: 1em;
+      padding: 5px;
+      margin-bottom: 20px;
+    }
+    #poetryBox {
+      background: linear-gradient(145deg, #222, #000);
+      border-radius: 10px;
+      padding: 20px;
+      margin: auto;
+      max-width: 600px;
+      box-shadow: 0 0 20px #fff;
+      font-size: 1.5em;
+      line-height: 2em;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #444;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>اردو شاعری بوٹ</h1>
+  <select id="poetSelect"></select>
+  <div id="poetryBox">شاعری یہاں ظاہر ہوگی</div>
+  <button onclick="showRandomPoetry()">نیا شعر دکھائیں</button>
+
+  <script src="poetryData.js"></script>
+  <script>
+    const poetSelect = document.getElementById('poetSelect');
+    const poetryBox = document.getElementById('poetryBox');
+
+    Object.keys(poetryData).forEach(poet => {
+      const option = document.createElement('option');
+      option.value = poet;
+      option.textContent = poet;
+      poetSelect.appendChild(option);
+    });
+
+    function showRandomPoetry() {
+      const selectedPoet = poetSelect.value;
+      const poems = poetryData[selectedPoet];
+      const randomIndex = Math.floor(Math.random() * poems.length);
+      poetryBox.textContent = poems[randomIndex];
+    }
+  </script>
+</body>
+</html>
